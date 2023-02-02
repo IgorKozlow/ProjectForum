@@ -1,0 +1,42 @@
+{% extends 'user/base.html' %}
+
+{% block content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-lg-offset-0">
+                    <!-- display the page title and the number of threads we got from the database -->
+                    <div class="row pad">
+                            <div class="col-lg-12">
+                                <div class="panel panel-primary">
+                                    <div class="card-body">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            Почта: <strong class="float-right"> {{ user.email }}</strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Имя пользователя: <strong class="float-right">{{ user.username }}</strong>
+                                        </li>
+                                        <li class="list-group-item">
+                                            Количество постов: <strong class="float-right">{{ topic.count }}</strong>
+                                        </li>
+                                        <li class="list-group-item"><a href="/">Редактировать аккаунт</a></li>
+                                        <li class="list-group-item"><a href="/">Удалить аккаунт</a></li>
+                                        <li class="list-group-item" style="text-align: center"> Мои посты:
+                                        {% for i in topic %}
+                                                 <li class="list-group-item">
+                                        <p><a href="{{i.get_absolute_url}}">{{ i.content }}</a></p>
+                                            <a href="{{ i.get_absolute_url_edit }}"  class="btn btn-primary" >Изменить</a>
+                                            <a href="{% url 'delete_page' i.slug %}" class="btn btn-secondary">Удалить</a>
+                                                </li>
+                                        {% endfor%}
+                                        </li>
+                                    </ul>
+                                </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

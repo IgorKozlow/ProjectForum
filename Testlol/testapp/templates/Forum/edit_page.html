@@ -1,0 +1,18 @@
+      {% extends 'user/base.html' %}
+      {% block content %}
+
+      <div class="container" style="display: block;
+    margin-left: auto;
+    margin-right: auto;">
+
+                  <form id="edit_form" method="POST" role="form">
+                      {% csrf_token %}
+                      {{ form }}
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
+          </br>
+
+      </div>
+
+
+      {% endblock %}
